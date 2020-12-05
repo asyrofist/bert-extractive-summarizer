@@ -63,7 +63,7 @@ class ModelProcessor(object):
         self,
         content: List[str],
         ratio: float = 0.2,
-        algorithm: str = 'kmeans',
+        algorithm: str = 'MiniBatchKMeans',
         use_first: bool = True,
         num_sentences: int = None
     ) -> Tuple[List[str], np.ndarray]:
@@ -211,7 +211,7 @@ class ModelProcessor(object):
         min_length: int = 40,
         max_length: int = 600,
         use_first: bool = True,
-        algorithm: str = 'kmeans',
+        algorithm: str = 'MiniBatchKMeans',
         num_sentences: int = None
     ) -> str:
         """
@@ -224,7 +224,7 @@ class ModelProcessor(object):
         :param min_length: Minimum length of sentence candidates to utilize for the summary.
         :param max_length: Maximum length of sentence candidates to utilize for the summary
         :param use_first: Whether or not to use the first sentence
-        :param algorithm: Which clustering algorithm to use. (kmeans, gmm)
+        :param algorithm: Which clustering algorithm to use. (MiniBatchKMeans, gmm)
         :param Number of sentences to use (overrides ratio).
         :return: A summary sentence
         """
