@@ -2,7 +2,7 @@ from typing import List, Dict
 
 import numpy as np
 from numpy import ndarray
-from sklearn.cluster import KMeans
+from sklearn.cluster import MiniBatchKMeans
 from sklearn.decomposition import PCA
 from sklearn.mixture import GaussianMixture
 
@@ -15,7 +15,7 @@ class ClusterFeatures(object):
     def __init__(
         self,
         features: ndarray,
-        algorithm: str = 'kmeans',
+        algorithm: str = 'MiniBatchKMeans',
         pca_k: int = None,
         random_state: int = 12345
     ):
@@ -46,7 +46,7 @@ class ClusterFeatures(object):
 
         if self.algorithm == 'gmm':
             return GaussianMixture(n_components=k, random_state=self.random_state)
-        return KMeans(n_clusters=k, random_state=self.random_state)
+        return MiniBatchKMeans(n_clusters=k, random_state=self.random_state)
 
     def __get_centroids(self, model):
         """
